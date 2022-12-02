@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function Concluidas({terminadas, cards}){
     return (
-    <FooterConcluidas>
+    <FooterConcluidas data-test="footer">
         {terminadas.length}/{cards.length} CONCLUÍDOS
     </FooterConcluidas>) 
 }

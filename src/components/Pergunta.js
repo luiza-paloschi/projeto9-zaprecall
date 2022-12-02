@@ -54,7 +54,7 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
     return (
     <>
     {estado === 0 && 
-    <PerguntaFechada color={()=> {
+    <PerguntaFechada data-test="flashcard" color={()=> {
         if (finished === false){
             return "#333333";
         } else if (isZap){
@@ -65,29 +65,29 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
             return "#FF3030";
         }
     }} finished={finished}>
-        <p>
+        <p data-test="flashcard-text">
             {`Pergunta ${index +1}`}
         </p>
-        {isZap && <img src={certo} alt="certo"/>}
-        {semi && <img src={quaseLembrei} alt="quase"/>}
-        {naoLembrei && <img src={erro} alt="erro"/>}
-        {!finished &&<img src={play} onClick={mudaEstado} alt="play"/>}
+        {isZap && <img data-test="no-icon" src={certo} alt="certo"/>}
+        {semi && <img data-test="partial-icon" src={quaseLembrei} alt="quase"/>}
+        {naoLembrei && <img data-test="zap-icon" src={erro} alt="erro"/>}
+        {!finished &&<img src={play} onClick={mudaEstado} data-test="play-btn" alt="play"/>}
         
     </PerguntaFechada>} 
 
     {estado === 1 && 
-    <PerguntaAberta>
-       <p>{pergunta.question}</p>
-       <img src={turn} onClick={mudaEstado} alt="turn"/>
+    <PerguntaAberta data-test="flashcard">
+       <p data-test="flashcard-text">{pergunta.question}</p>
+       <img data-test="turn-btn" src={turn} onClick={mudaEstado} alt="turn"/>
     </PerguntaAberta>} 
     
     {estado === 2 && 
-    <PerguntaAberta>
-       {pergunta.answer}
+    <PerguntaAberta data-test="flashcard">
+       <p data-test="flashcard-text">{pergunta.answer}</p>
        <ContainerBotao>
-            <Botao onClick={()=> errou()} cor="#FF3030">Não lembrei!</Botao>
-            <Botao onClick={()=> quase()} cor="#FF922E">Quase não lembrei!</Botao>
-            <Botao onClick={()=> zap()} cor="#2FBE34">Zap!!</Botao>
+            <Botao data-test="no-btn" onClick={()=> errou()} cor="#FF3030">Não lembrei!</Botao>
+            <Botao  data-test="partial-btn" onClick={()=> quase()} cor="#FF922E">Quase não lembrei!</Botao>
+            <Botao  data-test="zap-btn" onClick={()=> zap()} cor="#2FBE34">Zap!!</Botao>
        </ContainerBotao>
     </PerguntaAberta>} 
     </>
