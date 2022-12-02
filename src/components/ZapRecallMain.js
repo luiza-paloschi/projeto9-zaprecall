@@ -21,7 +21,7 @@ export default function ZapRecallMain(){
     return (
         <ScreenContainer>
             <Logo />
-            <Deck cards={cards}/>
+            <Deck cards={cards} terminadas={terminadas} setTerminadas={setTerminadas}/>
             <Concluidas terminadas={terminadas} cards={cards}/>
         </ScreenContainer>
     );
