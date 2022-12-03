@@ -14,6 +14,7 @@ min-height: 50px;
 background-color: #FFFFFF;
 position: fixed;
 bottom: 0;
+z-index: 1;
 display: flex;
 flex-direction: column;
 align-items: center;

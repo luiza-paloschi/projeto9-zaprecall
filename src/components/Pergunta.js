@@ -18,39 +18,26 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
         setEstado(a);
     }
 
-    function zap(){
+    function fecharCard(resultado){
         const novoObj = {...pergunta};
-        novoObj.terminada = "zap";
+        novoObj.terminada = resultado;
         const novoArray = [...terminadas, novoObj];
         
         setTerminadas(novoArray)
         setEstado(0)
         setFinished(true)
-        setZap(true)
+        if (resultado ==="zap"){
+            setZap(true)
+        }
+        if (resultado ==="quase"){
+            setSemi(true)
+        }
+        if (resultado ==="erro"){
+            setNaoLembrei(true)
+        }
+        
     }
 
-    function quase(){
-        const novoObj = {...pergunta};
-        novoObj.terminada = "quase";
-        const novoArray = [...terminadas, novoObj];
-        
-        setTerminadas(novoArray)
-        setEstado(0)
-        setFinished(true)
-        setSemi(true)
-    }
-
-    function errou(){
-        const novoObj = {...pergunta};
-        novoObj.terminada = "erro";
-        const novoArray = [...terminadas, novoObj];
-        
-        setTerminadas(novoArray)
-        setEstado(0)
-        setFinished(true)
-        setNaoLembrei(true)
-    }
-    
     return (
     <>
     {estado === 0 && 
@@ -68,9 +55,9 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
         <p data-test="flashcard-text">
             {`Pergunta ${index +1}`}
         </p>
-        {isZap && <img data-test="no-icon" src={certo} alt="certo"/>}
+        {isZap && <img data-test="zap-icon" src={certo} alt="certo"/>}
         {semi && <img data-test="partial-icon" src={quaseLembrei} alt="quase"/>}
-        {naoLembrei && <img data-test="zap-icon" src={erro} alt="erro"/>}
+        {naoLembrei && <img data-test="no-icon" src={erro} alt="erro"/>}
         {!finished &&<img src={play} onClick={mudaEstado} data-test="play-btn" alt="play"/>}
         
     </PerguntaFechada>} 
@@ -85,9 +72,9 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
     <PerguntaAberta data-test="flashcard">
        <p data-test="flashcard-text">{pergunta.answer}</p>
        <ContainerBotao>
-            <Botao data-test="no-btn" onClick={()=> errou()} cor="#FF3030">Não lembrei!</Botao>
-            <Botao  data-test="partial-btn" onClick={()=> quase()} cor="#FF922E">Quase não lembrei!</Botao>
-            <Botao  data-test="zap-btn" onClick={()=> zap()} cor="#2FBE34">Zap!!</Botao>
+            <Botao data-test="no-btn" onClick={()=> fecharCard("erro")} cor="#FF3030">Não lembrei!</Botao>
+            <Botao  data-test="partial-btn" onClick={()=> fecharCard("quase")} cor="#FF922E">Quase não lembrei!</Botao>
+            <Botao  data-test="zap-btn" onClick={()=> fecharCard("zap")} cor="#2FBE34">Zap!!</Botao>
        </ContainerBotao>
     </PerguntaAberta>} 
     </>
