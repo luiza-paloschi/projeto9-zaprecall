@@ -1,17 +1,17 @@
 import { useState } from "react";
-import styled from "styled-components"
-import play from "../assets/seta_play.png"
-import turn from "../assets/seta_virar.png"
-import certo from "../assets/icone_certo.png"
-import quaseLembrei from "../assets/icone_quase.png"
-import erro from "../assets/icone_erro.png"
+import styled from "styled-components";
+import play from "../assets/seta_play.png";
+import turn from "../assets/seta_virar.png";
+import certo from "../assets/icone_certo.png";
+import quaseLembrei from "../assets/icone_quase.png";
+import erro from "../assets/icone_erro.png";
 
 export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
-    const [estado, setEstado] = useState(0)
-    const [finished, setFinished] = useState(false)
-    const [isZap, setZap] = useState(false)
-    const [semi, setSemi] = useState(false)
-    const [naoLembrei, setNaoLembrei] = useState(false)
+    const [estado, setEstado] = useState(0);
+    const [finished, setFinished] = useState(false);
+    const [isZap, setZap] = useState(false);
+    const [semi, setSemi] = useState(false);
+    const [naoLembrei, setNaoLembrei] = useState(false);
 
     function mudaEstado(){
         const a = estado + 1;
@@ -23,19 +23,18 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
         novoObj.terminada = resultado;
         const novoArray = [...terminadas, novoObj];
         
-        setTerminadas(novoArray)
-        setEstado(0)
-        setFinished(true)
+        setTerminadas(novoArray);
+        setEstado(0);
+        setFinished(true);
         if (resultado ==="zap"){
-            setZap(true)
+            setZap(true);
         }
         if (resultado ==="quase"){
-            setSemi(true)
+            setSemi(true);
         }
         if (resultado ==="erro"){
-            setNaoLembrei(true)
+            setNaoLembrei(true);
         }
-        
     }
 
     return (
