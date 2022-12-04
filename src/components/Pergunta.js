@@ -99,7 +99,10 @@ p {
     font-size: 16px;
     line-height: 19px;
     color: ${props => props.color};
-  }
+}
+img {
+    cursor: ${props => props.finished? "default" : "pointer"};
+}
 `
 const PerguntaAberta = styled.li`
     width: 300px;
@@ -123,6 +126,7 @@ const PerguntaAberta = styled.li`
         position: absolute;
         bottom: 10px;
         right: 10px;
+        cursor: pointer;
       }
 `
 
@@ -142,6 +146,7 @@ background: ${props => props.cor};
 border-radius: 5px;
 border: 1px solid;
 padding:5px;
+cursor: pointer;
 `
 const ContainerBotao = styled.div`
     display: flex;
