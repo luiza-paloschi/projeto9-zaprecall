@@ -5,7 +5,6 @@ import logo from "../assets/logo.png";
 
 export default function BoasVindas(){
     const [iniciar, setIniciar] = useState(false);
-    
     return (
     <ScreenContainer iniciar={iniciar}>
        <ImagemLogo src={logo} alt="logo"/>
@@ -44,7 +43,7 @@ const ScreenContainer = styled.div`
 const ImagemLogo = styled.img`
 width: 136px;
 height: 161px;
-`
+`;
 
 const BotaoIniciar = styled.button`
 width: 246px;
@@ -66,4 +65,4 @@ margin-bottom: 50px;
     box-shadow: 0 0.5em 0.5em -0.4em #FFFFFF;
   transform: translateY(-0.25em);
 }
-`
+`;

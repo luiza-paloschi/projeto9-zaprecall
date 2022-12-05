@@ -5,8 +5,6 @@ import erro from "../assets/icone_erro.png";
 import sad from "../assets/sad.png";
 import party from "../assets/party.png";
 
-
-
 export default function Concluidas({terminadas, cards}){
 
     return (
@@ -28,21 +26,21 @@ export default function Concluidas({terminadas, cards}){
                 <h1>Parabéns!</h1>
             </DivTitulo>
             <p>Você não esquceu de nenhum flashcard!</p>
-        </DivMensagem> 
+        </DivMensagem>
         : false}
         {terminadas.length}/{cards.length} CONCLUÍDOS
         <ContainerBotoes>
             {terminadas.map((pergunta, index)=> {
                 if(pergunta.terminada === "zap"){
-                    return <img data-test="zap-icon" key={index} src={certo} alt="certo"/>
+                    return (<img data-test="zap-icon" key={index} src={certo} alt="certo"/>);
                 } else if(pergunta.terminada === "quase"){
-                    return <img data-test="partial-icon" key={index} src={quaseLembrei} alt="quase"/>
+                    return (<img data-test="partial-icon" key={index} src={quaseLembrei} alt="quase"/>);
                 } else {
-                    return <img data-test="no-icon" key={index} src={erro} alt="erro"/>
+                    return (<img data-test="no-icon" key={index} src={erro} alt="erro"/>);
                 }
             })}
-        </ContainerBotoes> 
-    </FooterConcluidas>) 
+        </ContainerBotoes>
+    </FooterConcluidas>);
 }
 
 const FooterConcluidas = styled.div`
@@ -61,7 +59,7 @@ font-weight: 400;
 font-size: 18px;
 color: #333333;
 padding: 10px;
-`
+`;
 
 const ContainerBotoes = styled.div`
     display: flex;
@@ -70,7 +68,7 @@ const ContainerBotoes = styled.div`
     align-items: center;
     column-gap: 5px;
     margin: 10px;
-`
+`;
 
 const DivMensagem = styled.div`
     display: flex;
@@ -95,7 +93,7 @@ const DivMensagem = styled.div`
         font-size: 18px;
         line-height: 22px;
     }
-`
+`;
 
 const DivTitulo = styled.div`
     display: flex;
@@ -106,4 +104,4 @@ const DivTitulo = styled.div`
         height: 23px;
         margin-right: 12px;
     }
-`
+`;

@@ -22,7 +22,7 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
         const novoObj = {...pergunta};
         novoObj.terminada = resultado;
         const novoArray = [...terminadas, novoObj];
-        
+
         setTerminadas(novoArray);
         setEstado(0);
         setFinished(true);
@@ -39,7 +39,7 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
 
     return (
     <>
-    {estado === 0 && 
+    {estado === 0 &&
     <PerguntaFechada data-test="flashcard" color={()=> {
         if (finished === false){
             return "#333333";
@@ -58,16 +58,15 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
         {semi && <img data-test="partial-icon" src={quaseLembrei} alt="quase"/>}
         {naoLembrei && <img data-test="no-icon" src={erro} alt="erro"/>}
         {!finished &&<img src={play} onClick={mudaEstado} data-test="play-btn" alt="play"/>}
-        
     </PerguntaFechada>} 
 
-    {estado === 1 && 
+    {estado === 1 &&
     <PerguntaAberta data-test="flashcard">
        <p data-test="flashcard-text">{pergunta.question}</p>
        <img data-test="turn-btn" src={turn} onClick={mudaEstado} alt="turn"/>
-    </PerguntaAberta>} 
-    
-    {estado === 2 && 
+    </PerguntaAberta>}
+
+    {estado === 2 &&
     <PerguntaAberta data-test="flashcard">
        <p data-test="flashcard-text">{pergunta.answer}</p>
        <ContainerBotao>
@@ -75,7 +74,7 @@ export default function Pergunta({pergunta, index, terminadas, setTerminadas}){
             <Botao  data-test="partial-btn" onClick={()=> fecharCard("quase")} cor="#FF922E">Quase não lembrei!</Botao>
             <Botao  data-test="zap-btn" onClick={()=> fecharCard("zap")} cor="#2FBE34">Zap!!</Botao>
        </ContainerBotao>
-    </PerguntaAberta>} 
+    </PerguntaAberta>}
     </>
     );
 }
@@ -103,7 +102,7 @@ p {
 img {
     cursor: ${props => props.finished? "default" : "pointer"};
 }
-`
+`;
 const PerguntaAberta = styled.li`
     width: 300px;
     margin: 12px;
@@ -128,28 +127,28 @@ const PerguntaAberta = styled.li`
         right: 10px;
         cursor: pointer;
       }
-`
+`;
 
 const Botao = styled.button`
-width: 90px;
-font-family: 'Recursive';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 14px;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-color: #FFFFFF;
-background: ${props => props.cor};
-border-radius: 5px;
-border: 1px solid;
-padding:5px;
-cursor: pointer;
-`
+    width: 90px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: ${props => props.cor};
+    border-radius: 5px;
+    border: 1px solid;
+    padding:5px;
+    cursor: pointer;
+`;
 const ContainerBotao = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
-`
+`;
